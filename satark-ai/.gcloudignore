@@ -1,0 +1,15 @@
+# This file specifies files that are *not* uploaded to Google Cloud
+.gcloudignore
+.git
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv
+readme.md
+README.md
