@@ -1,8 +1,35 @@
-streamlit
-pillow
-python-dotenv
-requests
-beautifulsoup4
-feedparser
-pymupdf
-google-generativeai
+# =============================================================================
+# 🛡️ Satark AI - Unified Requirements
+# =============================================================================
+# Combined dependencies for both Satark AI and Deepfake App
+
+# Core Streamlit framework
+streamlit>=1.28.0
+
+# Google AI APIs
+google-generativeai>=0.3.0
+
+# Image processing
+pillow>=10.0.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# PDF generation (for Satark AI reports)
+fpdf2>=2.7.0
+
+# Web search capabilities (for Satark AI)
+duckduckgo-search>=4.0.0
+
+# Web scraping and parsing
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+
+# RSS feed parsing (for Deepfake app)
+feedparser>=6.0.0
+
+# PDF processing (for Deepfake app)
+pymupdf>=1.26.0
+
+# Additional dependencies that might be needed
+typing-extensions>=4.0.0
