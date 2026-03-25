@@ -52,17 +52,50 @@ GMAIL_APP_PASSWORD=your_gmail_app_password_here
 - **Keep API keys secure** and rotate them regularly
 - **Use `.env.example`** as a template for new setups
 
-## Usage
+## Deployment
 
-Run the landing page application:
-```bash
-streamlit run main.py
-```
+### Streamlit Cloud Deployment
 
-The application will:
-1. Load configuration from the root `.env` file
-2. Open in your default browser
-3. Let you choose between Satark AI and Deepfake App
+To deploy on Streamlit Cloud:
+
+1. **Fork or use this repository**: [https://github.com/imcoderdev/satark-ai-landing-page](https://github.com/imcoderdev/satark-ai-landing-page)
+
+2. **Configure secrets** in Streamlit Cloud dashboard:
+   ```toml
+   # Add in app settings -> Secrets
+   GEMINI_API_KEY = "your_actual_gemini_api_key"
+   GMAIL_SENDER = "your_email@gmail.com"  # Optional
+   GMAIL_APP_PASSWORD = "your_app_password"  # Optional
+   ```
+
+3. **Set main file path**: `main.py`
+
+4. **Dependencies**: All requirements are automatically installed from `requirements.txt`
+
+### Local Development
+
+1. Clone and setup:
+   ```bash
+   git clone https://github.com/imcoderdev/satark-ai-landing-page.git
+   cd satark-ai-landing-page
+   pip install -r requirements.txt
+   ```
+
+2. Configure environment:
+   ```bash
+   cp .env.example .env
+   # Edit .env with your API keys
+   ```
+
+3. Test dependencies (optional):
+   ```bash
+   python test_dependencies.py
+   ```
+
+4. Run the app:
+   ```bash
+   streamlit run main.py
+   ```
 
 ## Project Structure
 
@@ -114,6 +147,13 @@ For Satark AI email alerts:
 ### Known Issues
 
 - **Google Generative AI Deprecation Warning**: The `google.generativeai` package is being deprecated in favor of `google.genai`. This doesn't affect functionality but may show warnings. Consider updating to the new package in future versions.
+
+### Recent Fixes (March 2025)
+
+- ✅ **Fixed missing dependencies**: Added `duckduckgo-search`, `fpdf2`, `pymupdf`, `feedparser`
+- ✅ **Fixed Google AI import**: Updated from deprecated `genai.Client()` to `genai.GenerativeModel()`
+- ✅ **Fixed encoding issues**: Clean UTF-8 requirements.txt for deployment compatibility
+- ✅ **Added dependency testing**: `test_dependencies.py` script for troubleshooting
 
 ### Testing Setup
 
