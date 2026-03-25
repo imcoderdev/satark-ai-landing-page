@@ -8,12 +8,16 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 def send_scam_alert_email(scam_details: dict, recipient_email: str = "mistyraju0@gmail.com"):
     """
     Send email alert when scam is detected
-    
+
     Args:
         scam_details: Dictionary containing scam analysis results
         recipient_email: Email address to send alert to
@@ -22,11 +26,14 @@ def send_scam_alert_email(scam_details: dict, recipient_email: str = "mistyraju0
         # Gmail SMTP configuration
         smtp_server = "smtp.gmail.com"
         smtp_port = 587
-        
-        # Use configured credentials
-        sender_email = "kalen5471@gmail.com"
-        sender_password = "qbodchmvakgmvueh"
-        
+
+        # Get credentials from environment variables
+        sender_email = os.getenv("GMAIL_SENDER")
+        sender_password = os.getenv("GMAIL_APP_PASSWORD")
+
+        if not sender_email or not sender_password:
+            raise ValueError("Gmail credentials not configured. Please set GMAIL_SENDER and GMAIL_APP_PASSWORD in .env file")
+
         # Extract scam details
         verdict = scam_details.get("verdict", "UNKNOWN")
         risk_score = scam_details.get("risk_score", 0)
